@@ -1,0 +1,39 @@
+<html>
+  <body>
+  	<center>
+	  <h1>Vice Crawl</h3>
+	  <h3>Please make sure to give full addresses with all addresses being in the same state. Please make sure to specify the city and state at the end of your address. Otherwise everything breaks.</h3>
+	  <div id="addressInput">
+		<div id="startSelect">
+		   	</br>
+		   	STARTING ADDRESS</br>
+		    <input id="start" class="autocomplete" type="text" placeholder="Set Starting Address" />
+		    <input id="getLatLong" type="button" value="Set" onclick="setStart(); hideStart();listAddresses();" /></br></br>
+		</div>
+
+		<div id="endSelect">
+		   	</br>
+		   	ENDING ADDRESS</br>
+		    <input id="end" class="autocomplete" type="text" placeholder="Set Ending Address" />
+		    <input id="getLatLong" type="button" value="Set" onclick="setEnd(); hideEnd(); showWayPoints();listAddresses();" /></br></br>
+		</div>
+	       
+	    <div id="waypoints">
+		    <input id="address" class="autocomplete" type="text" placeholder="Add Another Address" />
+		    <input id="getLatLong" type="button" value="Add this address to your Vice Crawl" onclick="getAddress(); listAddresses();" /></br></br>
+		    <input id="clickMe" type="button" value="Complete Route" onclick="initialize(); hideInput(); showRefreshButton();" />
+		    </br>
+		    </br>
+	    </div>
+	  </div>
+	  <div id="addressList">YOUR ADDRESSES: </br></br></div>
+	  </br>
+	  <input id="refreshButton" type="button" value="Generate A New Crawl" onclick="refresh();" /></br></br>
+	  <div id="map-canvas"></div>
+    </center>
+  </body>
+</html>
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyAFZ1b3YAasisU3I2KLXKK3nPwu0chlbPY"></script>
+<script src="vicecrawler.js"></script>
+<link rel="stylesheet" type="text/css" href="vicecrawler.css">
