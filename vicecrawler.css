@@ -1,0 +1,15 @@
+#map-canvas {
+    height:400px;
+}
+
+#waypoints{
+    visibility: hidden;
+}
+
+#endSelect{
+    visibility: hidden;
+}
+
+#refreshButton{
+    visibility: hidden;
+}
