@@ -1,20 +1,25 @@
-How to launch: Make sure the html, css, and js file are in the same folder and then open the .html file in a web browser (I use chrome)
+How to launch: 
+1. Make sure the html, css, and js file are in the same folder on your machine.
+2. Click the .html file to open in your web browser (Developers confirm it works in Edge and Chrome.)
+
 
 Directions:
 
-Enter a full address or a location name followed by "seattle wa", otherwise it breaks
+Always enter a full address with no commas (Example: 901 12th Ave Seattle WA 98122).
 
-Must have a Start and End location otherwise it breaks (I hide the final button so its impossible for the user to create a route without a start and end location)
+Note: You must enter first the start location then the end location. The next location entered will be stop 2. The next, stop 3. And so on.
 
-Add as many "along the way" points as you'd like
+You may have as many points between your defined start and end as you would like.
+
+
 
 How it works:
 
-First the HTML gathers all the submitted addresses and runs them through getLatitudeLongitude() which is sending them to a geocoder api and creating arrays of lat/longs for the addressees (this is necessary since the maps api accepts lat/long coords to generate its route)
+1. The HTML gathers all the submitted addresses and runs them through getLatitudeLongitude(). This function sends them to a geocoder api which creating arrays of latitudes and longitudes for the addressees. This is necessary because the googlemaps api accepts latitude and longitude coordinates to generate its the route.
 
-When the user hits the Create Route button it triggers the initialize() function which creates an empty map and calls createRoute()
+2. When the user hits "Create Route," it triggers initialize(). This function creates an empty map and calls createRoute().
 
-createRoute() runs through the array of lat/longs and inputs them into the map, creating markers. startCoords and endCoords are the start and end points respectively and all other addresses are added as "waypoints". Optimization is handled automatically.
+3. createRoute() runs through the array of coordinates and inputs them into the map, creating markers. startCoords and endCoords are the start and end points. All other addresses are added as "waypoints". Optimization is handled automatically.
 
-All other functions are just helpers to make sure people can't use the app wrong (I hide buttons I don't want them touching yet, force them to complete steps that need to be done in order, and list the addresses they gave me)
+4. All other functions are just helpers to make sure people can't use the app wrong. For example: Buttons that are not essential for the current step are hidden to force the user to interact with the site in the manner the developers desire.
 
