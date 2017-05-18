@@ -5,25 +5,29 @@
   <body>
   	<center>
 	  <h1>Vice Crawl</h1>
-	  <h3>Please make sure to give full addresses with all addresses being in the same state. Please make sure to specify the city and state at the end of your address. Otherwise everything breaks.</h3>
+	  <h3>Full addresses required. All addresses must be in the same city and state which is specified in the starting address. </h3>
 	  <div id="addressInput">
 		<div id="startSelect">
 		   	<h4></br>
 		   	STARTING ADDRESS</br></h4>
-		    <input id="start" class="autocomplete" type="text" placeholder="Set Starting Address" /></br>
-		    <input id="city" class="autocomplete" type="text" placeholder="Set City"/>
-		    <input id="state" class="autocomplete" type="text" placeholder="Set State"/></br>
+			<input id "label" class="autocomplete" type= "text" placeholder="Nickname" /></br>
+		    <input id="start" class="autocomplete" type="text" placeholder="Start Address" /></br>
+		    <input id="city" class="autocomplete" type="text" placeholder="City"/>
+		    <input id="state" class="autocomplete" type="text" placeholder="State"/></br>
 		    <input id="getLatLong" type="button" value="Set" onclick="setStart(); hideStart();listAddresses();" /></br></br>
 		</div>
 
 		<div id="endSelect">
 		   	<h4></br>
 		   	ENDING ADDRESS</br></h4>
-		    <input id="end" class="autocomplete" type="text" placeholder="Set Ending Address" />
+			
+			<input id "label" class="autocomplete" type= "text" placeholder="Nickname" /></br>
+		    <input id="end" class="autocomplete" type="text" placeholder="End Address" />
 		    <input id="getLatLong" type="button" value="Set" onclick="setEnd(); hideEnd(); showWayPoints();listAddresses();" /></br></br>
 		</div>
 	       
 	    <div id="waypoints">
+			<input id "label" class="autocomplete" type= "text" placeholder="Nickname For This Address" /></br>
 		    <input id="address" class="autocomplete" type="text" placeholder="Add Another Address" />
 		    <input id="getLatLong" type="button" value="Add this address to your Vice Crawl" onclick="getAddress(); listAddresses();" /></br></br>
 		    <input id="clickMe" type="button" value="Complete Route" onclick="initialize(); hideInput(); showRefreshButton();" />
