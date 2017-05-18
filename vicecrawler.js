@@ -1,7 +1,10 @@
 var latLongs = [];
 var addresses = [];
 var startCoords = [];
-var endCoords = []
+var endCoords = [];
+var spc = " "; //spc is just used for a quick space since concat needs variables
+var city;
+var state;
 var start;
 var end;
 var consistentIndex = 0;
@@ -33,18 +36,21 @@ function getLatitudeLongitude(address, type) {
   }
 }
 
+//Changed the start to change the global variable for city and state so it will affect all addresses put in.
 function setStart(){
-    start = document.getElementById('start').value;
+    city = document.getElementById("city").value;
+    state = document.getElementById("state").value;
+    start = document.getElementById('start').value.concat(spc, city, spc, state);
     getLatitudeLongitude(start, "start")
 }
 
 function setEnd(){
-    end = document.getElementById('end').value;
+    end = document.getElementById('end').value.concat(spc, city, spc, state);
     getLatitudeLongitude(end, "end")
 }
 
 function getAddress() {
-    var address = document.getElementById('address').value;
+    var address = document.getElementById('address').value.concat(spc, city, spc, state);
     getLatitudeLongitude(address, false)
     addresses.push(address);
 };
