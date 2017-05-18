@@ -1,14 +1,21 @@
+/**
+*Javascript backend for a website which allows a user to make a "pubcrawl" style path using specified points using the googlemaps api
+*/
+
+
 var latLongs = [];	//an array of latitude and longitudes
 var addresses = [];		//the raw addresses	
 var startCoords = [];	//the start coordinates
 var endCoords = [];		//the end coordinates
 var spc = " "; //spc is used in concat for a quick space
+
 var city;
 var state;
 var start;
 var end;
-var consistentIndex = 0;
-listAddressIndex = 0;
+
+listAddressIndex = 0;		//used in listAddresses to increment to the next address
+var consistentIndex = 0;		//used in CreateRoute to increment to the next latitude and longitude pair
 
 /**
 *This function gets latitude and longitude from an address because the google maps api requires coordinates, not addresses.
