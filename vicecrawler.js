@@ -149,6 +149,7 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
   directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('right-panel'));
   createRoute();
 }
 
