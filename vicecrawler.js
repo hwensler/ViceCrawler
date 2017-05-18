@@ -1,8 +1,8 @@
-var latLongs = [];
-var addresses = [];
-var startCoords = [];
-var endCoords = [];
-var spc = " "; //spc is just used for a quick space since concat needs variables
+var latLongs = [];	//an array of latitude and longitudes
+var addresses = [];		//the raw addresses	
+var startCoords = [];	//the start coordinates
+var endCoords = [];		//the end coordinates
+var spc = " "; //spc is used in concat for a quick space
 var city;
 var state;
 var start;
@@ -10,6 +10,9 @@ var end;
 var consistentIndex = 0;
 listAddressIndex = 0;
 
+/**
+*This function gets latitude and longitude from an address because the google maps api requires coordinates, not addresses.
+*/
 
 function getLatitudeLongitude(address, type) {
   address = address || 'Seattle, WA';
@@ -36,7 +39,11 @@ function getLatitudeLongitude(address, type) {
   }
 }
 
-//Changed the start to change the global variable for city and state so it will affect all addresses put in.
+
+/**
+*Sets the first address to be visited
+*Start changes the global variable for city and state so all addresses put in will be in that city, limiting crawls to one city.
+*/
 function setStart(){
     city = document.getElementById("city").value;
     state = document.getElementById("state").value;
@@ -44,17 +51,26 @@ function setStart(){
     getLatitudeLongitude(start, "start")
 }
 
+/**
+*Sets the last address to be visited
+*/
 function setEnd(){
     end = document.getElementById('end').value.concat(spc, city, spc, state);
     getLatitudeLongitude(end, "end")
 }
 
+/**
+*Takes the address. Makes it into a single var. Gets the coordinates for that addresses.
+*/
 function getAddress() {
     var address = document.getElementById('address').value.concat(spc, city, spc, state);
     getLatitudeLongitude(address, false)
     addresses.push(address);
 };
 
+/**
+*Provides a list of the addresses for display or calculation
+*/
 function listAddresses(){
   document.getElementById('addressList').innerHTML =("YOUR ADDRESSES:" + "<br>"); 
   if(start){
@@ -68,6 +84,9 @@ function listAddresses(){
   }
 }
 
+/**
+*Hides ability to input (for final display)
+*/
 function hideInput(){
   document.getElementById("getLatLong").style.display = 'none';
   document.getElementById("address").style.display = 'none';
@@ -75,19 +94,31 @@ function hideInput(){
   document.getElementById("waypoints").style.display = 'none';
 }
 
+/**
+*Hides the set start button
+*/
 function hideStart(){
   document.getElementById("startSelect").style.display = 'none';
   document.getElementById("endSelect").style.visibility = 'visible';
 }
 
+/**
+*Hides the set end button
+*/
 function hideEnd(){
     document.getElementById("endSelect").style.display = 'none';
 }
 
+/**
+*Lists the waypoints (points between start and end)
+*/
 function showWayPoints(){
     document.getElementById("waypoints").style.visibility = 'visible';
 }
 
+/**
+*Allows the refresh button to be shown
+*/
 function showRefreshButton(){
     document.getElementById("refreshButton").style.visibility = 'visible';
 }
@@ -96,6 +127,9 @@ var directionDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
 
+/**
+*Creates an empty map after the user hits "Create Route"
+*/
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer({
     suppressMarkers: false
@@ -111,6 +145,9 @@ function initialize() {
   createRoute();
 }
 
+/**
+*Adds markers to the map to create the route
+*/
 function createRoute() {
   var waypts = [];
 
@@ -127,6 +164,7 @@ function createRoute() {
   start = new google.maps.LatLng(Number(startCoords[0]), Number(startCoords[1]));
   end = new google.maps.LatLng(Number(endCoords[0]), Number(endCoords[1]));
     
+// the requested route to be created
   var request = {
     origin: start,
     destination: end,
@@ -135,7 +173,9 @@ function createRoute() {
     travelMode: google.maps.DirectionsTravelMode.WALKING
   };
 
+  
   directionsService.route(request, function (response, status) {
+	//if the api is working and everything is in order
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
       var route = response.routes[0];
@@ -143,10 +183,16 @@ function createRoute() {
   });
 }
 
+/**
+*Reloads the window
+*/
 function refresh(){
   window.location.reload()
 }
 
+/**
+*Creates a marker on the map
+*/
 function createMarker(latlong) {
   var marker = new google.maps.Marker({
     position: latlong,
