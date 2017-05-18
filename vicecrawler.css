@@ -1,15 +1,33 @@
+body {
+	background-color: #FA5858;
+}
+h1{
+	font-family: helvetica;
+	color: white;
+}
+h4 {
+	font-family:helvetica;
+}
+
+#startSelect{
+	background-color: white;
+}
 #map-canvas {
     height:400px;
+    background-color: transparent;
 }
 
 #waypoints{
+	background-color: white;
     visibility: hidden;
 }
 
 #endSelect{
+	background-color: white;
     visibility: hidden;
 }
 
 #refreshButton{
+	background-color: white;
     visibility: hidden;
 }

@@ -1,12 +1,15 @@
 <html>
+<head>
+	<title>Vice Crawler</title>
+</head>
   <body>
   	<center>
-	  <h1>Vice Crawl</h3>
+	  <h1>Vice Crawl</h1>
 	  <h3>Please make sure to give full addresses with all addresses being in the same state. Please make sure to specify the city and state at the end of your address. Otherwise everything breaks.</h3>
 	  <div id="addressInput">
 		<div id="startSelect">
-		   	</br>
-		   	STARTING ADDRESS</br>
+		   	<h4></br>
+		   	STARTING ADDRESS</br></h4>
 		    <input id="start" class="autocomplete" type="text" placeholder="Set Starting Address" /></br>
 		    <input id="city" class="autocomplete" type="text" placeholder="Set City"/>
 		    <input id="state" class="autocomplete" type="text" placeholder="Set State"/></br>
@@ -14,8 +17,8 @@
 		</div>
 
 		<div id="endSelect">
-		   	</br>
-		   	ENDING ADDRESS</br>
+		   	<h4></br>
+		   	ENDING ADDRESS</br></h4>
 		    <input id="end" class="autocomplete" type="text" placeholder="Set Ending Address" />
 		    <input id="getLatLong" type="button" value="Set" onclick="setEnd(); hideEnd(); showWayPoints();listAddresses();" /></br></br>
 		</div>
@@ -28,7 +31,7 @@
 		    </br>
 	    </div>
 	  </div>
-	  <div id="addressList">YOUR ADDRESSES: </br></br></div>
+	  <div id="addressList"><h4>YOUR ADDRESSES: </br></br></h4></div>
 	  </br>
 	  <input id="refreshButton" type="button" value="Generate A New Crawl" onclick="refresh();" /></br></br>
 	  <div id="map-canvas"></div>
